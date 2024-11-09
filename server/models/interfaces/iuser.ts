@@ -1,13 +1,13 @@
 import { Schema } from "mongoose";
 
 interface IUser {
-  name: String;
+  name: string;
   chatrooms: Schema.Types.ObjectId[];
   userPosts: Schema.Types.ObjectId[];
   likedPosts: Schema.Types.ObjectId[];
-  status: String;
+  status: string;
   reviews: Schema.Types.ObjectId[];
-  location: String;
+  location: string;
   createdAt: Date;
 }
 

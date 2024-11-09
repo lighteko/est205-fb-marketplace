@@ -4,7 +4,7 @@ interface IChat {
   chatroom: Schema.Types.ObjectId;
   from: Schema.Types.ObjectId;
   to: Schema.Types.ObjectId;
-  content: String;
+  content: string;
   createdAt: Date;
 }
 

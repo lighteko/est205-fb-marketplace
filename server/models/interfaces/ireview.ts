@@ -3,7 +3,7 @@ import { Schema } from "mongoose";
 interface IReview {
   author: Schema.Types.ObjectId;
   target: Schema.Types.ObjectId;
-  content: String;
+  content: string;
   createdAt: Date;
 }
 

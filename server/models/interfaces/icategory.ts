@@ -1,8 +1,8 @@
 import { Schema } from 'mongoose';
 
 interface ICategory {
-  name: String;
-  icon: String;
+  name: string;
+  icon: string;
   posts: Schema.Types.ObjectId[];
   createdAt: Date;
 }
