@@ -37,6 +37,15 @@ class PostController {
       res.status(400).send({ message: error.message });
     }
   }
+
+  async deletePost(req: Request, res: Response) {
+    try {
+      await PostService.deletePost(req.params.id);
+      res.sendStatus(204);
+    } catch (error) {
+      res.status(400).send({ message: error.message });
+    }
+  }
 }
 
 export default new PostController();

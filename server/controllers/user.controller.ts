@@ -37,6 +37,15 @@ class UserController {
       res.status(400).send({ message: error.message });
     }
   }
+
+  async deleteUser(req: Request, res: Response) {
+    try {
+      await UserService.deleteUser(req.params.id);
+      res.sendStatus(204);
+    } catch (error) {
+      res.status(400).send({ message: error.message });
+    }
+  }
 }
 
 export default new UserController();

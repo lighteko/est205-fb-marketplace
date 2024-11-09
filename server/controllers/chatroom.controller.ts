@@ -37,6 +37,15 @@ class ChatroomController {
       res.status(400).send({message: error.message});
     }
   }
+
+  async deleteChatroom(req: Request, res: Response) {
+    try {
+      await ChatroomService.deleteChatroom(req.params.id);
+      res.sendStatus(204);
+    } catch (error) {
+      res.status(400).send({message: error.message});
+    }
+  }
 }
 
 export default new ChatroomController();

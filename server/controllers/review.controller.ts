@@ -37,6 +37,15 @@ class ReviewController {
       res.status(400).send({ message: error.message });
     }
   }
+
+  async deleteReview(req: Request, res: Response) {
+    try {
+      await ReviewService.deleteReview(req.params.id);
+      res.sendStatus(204);
+    } catch (error) {
+      res.status(400).send({ message: error.message });
+    }
+  }
 }
 
 export default new ReviewController();

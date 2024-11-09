@@ -37,6 +37,15 @@ class ChatController {
       res.status(400).send({ message: error.message });
     }
   }
+
+  async deleteChat(req: Request, res: Response) {
+    try {
+      await ChatService.deleteChat(req.params.id);
+      res.sendStatus(204);
+    } catch (error) {
+      res.status(400).send({ message: error.message });
+    }
+  }
 }
 
 export default new ChatController();

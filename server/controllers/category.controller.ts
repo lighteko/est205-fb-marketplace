@@ -40,6 +40,15 @@ class CategoryController {
       res.status(400).send({ message: error.message });
     }
   }
+
+  async deleteCategory(req: Request, res: Response) {
+    try {
+      await CategoryService.deleteCategory(req.params.id);
+      res.sendStatus(204);
+    } catch (error) {
+      res.status(400).send({ message: error.message });
+    }
+  }
 }
 
 export default new CategoryController();
