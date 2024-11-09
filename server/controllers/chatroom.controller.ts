@@ -1,5 +1,5 @@
-import {Request, Response} from 'express';
-import ChatroomService from '../services/chatroom.service';
+import { Request, Response } from "express";
+import ChatroomService from "../services/chatroom.service";
 
 class ChatroomController {
   async createChatroom(req: Request, res: Response) {
@@ -7,7 +7,7 @@ class ChatroomController {
       const chatroom = await ChatroomService.createChatroom(req.body);
       res.status(201).send(chatroom);
     } catch (error) {
-      res.status(400).send({message: error.message});
+      res.status(400).send({ message: error.message });
     }
   }
 
@@ -16,7 +16,7 @@ class ChatroomController {
       const chatrooms = await ChatroomService.getChatrooms();
       res.status(200).send(chatrooms);
     } catch (error) {
-      res.status(400).send({message: error.message});
+      res.status(400).send({ message: error.message });
     }
   }
 
@@ -25,16 +25,19 @@ class ChatroomController {
       const chatroom = await ChatroomService.getChatroom(req.params.id);
       res.status(200).send(chatroom);
     } catch (error) {
-      res.status(400).send({message: error.message});
+      res.status(400).send({ message: error.message });
     }
   }
 
   async updateChatroom(req: Request, res: Response) {
     try {
-      const chatroom = await ChatroomService.updateChatroom(req.params.id, req.body);
+      const chatroom = await ChatroomService.updateChatroom(
+        req.params.id,
+        req.body
+      );
       res.status(200).send(chatroom);
     } catch (error) {
-      res.status(400).send({message: error.message});
+      res.status(400).send({ message: error.message });
     }
   }
 
@@ -43,7 +46,7 @@ class ChatroomController {
       await ChatroomService.deleteChatroom(req.params.id);
       res.sendStatus(204);
     } catch (error) {
-      res.status(400).send({message: error.message});
+      res.status(400).send({ message: error.message });
     }
   }
 }
