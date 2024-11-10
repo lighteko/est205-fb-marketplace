@@ -6,7 +6,7 @@ const PostSchema = new Schema<IPost>({
   category: { type: Schema.Types.ObjectId, ref: "Category" },
   title: { type: String, required: true },
   description: { type: String, required: true },
-  images: [{ type: String, required: true }],
+  images: [{ type: Schema.Types.ObjectId, required: true }],
   location: { type: String, required: true },
   price: { type: Number, required: true },
   likes: { type: Number, default: 0 },
