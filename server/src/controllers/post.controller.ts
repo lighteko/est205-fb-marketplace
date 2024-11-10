@@ -6,7 +6,7 @@ class PostController {
     try {
       const post = await PostService.createPost(req.body);
       res.status(201).send(post);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -15,7 +15,7 @@ class PostController {
     try {
       const posts = await PostService.getPosts();
       res.status(200).send(posts);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -24,7 +24,7 @@ class PostController {
     try {
       const post = await PostService.getPost(req.params.id);
       res.status(200).send(post);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -33,7 +33,7 @@ class PostController {
     try {
       const post = await PostService.updatePost(req.params.id, req.body);
       res.status(200).send(post);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -42,7 +42,7 @@ class PostController {
     try {
       await PostService.deletePost(req.params.id);
       res.sendStatus(204);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
