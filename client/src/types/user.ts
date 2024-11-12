@@ -1,4 +1,4 @@
-interface IUser {
+type User = {
   name: string;
   chatrooms: string[];
   userPosts: string[];
@@ -8,6 +8,6 @@ interface IUser {
   reviews: string[];
   location: string;
   createdAt: Date;
-}
+};
 
-export default IUser;
+export default User;

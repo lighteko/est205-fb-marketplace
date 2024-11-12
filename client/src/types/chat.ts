@@ -1,9 +1,9 @@
-interface IChat {
+type Chat = {
   chatroom: string;
   from: string;
   to: string;
   content: string;
   createdAt: Date;
-}
+};
 
-export default IChat;
+export default Chat;

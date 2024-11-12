@@ -1,27 +1,27 @@
 import axios from "axios";
 import Endpoints from "../constants/endpoints";
-import IChatroom from "../interfaces/ichatroom";
+import Chatroom from "../types/chatroom";
 
 class ChatroomService {
-  async createChatroom(chatroomData: IChatroom): Promise<IChatroom> {
+  async createChatroom(chatroomData: Chatroom): Promise<Chatroom> {
     const response = await axios.post(Endpoints.CHATROOMS, chatroomData);
     return response.data;
   }
 
-  async getChatrooms(): Promise<IChatroom[]> {
+  async getChatrooms(): Promise<Chatroom[]> {
     const response = await axios.get(Endpoints.CHATROOMS);
     return response.data;
   }
 
-  async getChatroom(id: string): Promise<IChatroom> {
+  async getChatroom(id: string): Promise<Chatroom> {
     const response = await axios.get(`${Endpoints.CHATROOMS}/${id}`);
     return response.data;
   }
 
   async updateChatroom(
     id: string,
-    chatroomData: Partial<IChatroom>
-  ): Promise<IChatroom> {
+    chatroomData: Partial<Chatroom>
+  ): Promise<Chatroom> {
     const response = await axios.put(
       `${Endpoints.CHATROOMS}/${id}`,
       chatroomData

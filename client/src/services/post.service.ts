@@ -1,24 +1,24 @@
 import axios from "axios";
 import Endpoints from "../constants/endpoints";
-import IPost from "../interfaces/ipost";
+import Post from "../types/post";
 
 class PostService {
-  async createPost(postData: IPost): Promise<IPost> {
+  async createPost(postData: Post): Promise<Post> {
     const response = await axios.post(Endpoints.POSTS, postData);
     return response.data;
   }
 
-  async getPosts(): Promise<IPost[]> {
+  async getPosts(): Promise<Post[]> {
     const response = await axios.get(Endpoints.POSTS);
     return response.data;
   }
 
-  async getPost(id: string): Promise<IPost> {
+  async getPost(id: string): Promise<Post> {
     const response = await axios.get(`${Endpoints.POSTS}/${id}`);
     return response.data;
   }
 
-  async updatePost(id: string, postData: Partial<IPost>): Promise<IPost> {
+  async updatePost(id: string, postData: Partial<Post>): Promise<Post> {
     const response = await axios.put(`${Endpoints.POSTS}/${id}`, postData);
     return response.data;
   }

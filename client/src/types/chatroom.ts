@@ -1,8 +1,8 @@
-interface IChatRoom {
+type ChatRoom = {
   post: string;
   users: string[];
   chats: string[];
   createdAt: Date;
-}
+};
 
-export default IChatRoom;
+export default ChatRoom;

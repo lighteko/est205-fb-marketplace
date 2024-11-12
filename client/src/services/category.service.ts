@@ -1,27 +1,27 @@
 import axios from "axios";
 import Endpoints from "../constants/endpoints";
-import ICategory from "../interfaces/icategory";
+import Category from "../types/category";
 
 class CategoryService {
-  async createCategory(categoryData: ICategory): Promise<ICategory> {
+  async createCategory(categoryData: Category): Promise<Category> {
     const response = await axios.post(Endpoints.CATEGORIES, categoryData);
     return response.data;
   }
 
-  async getCategories(): Promise<ICategory[]> {
+  async getCategories(): Promise<Category[]> {
     const response = await axios.get(Endpoints.CATEGORIES);
     return response.data;
   }
 
-  async getCategory(id: string): Promise<ICategory> {
+  async getCategory(id: string): Promise<Category> {
     const response = await axios.get(`${Endpoints.CATEGORIES}/${id}`);
     return response.data;
   }
 
   async updateCategory(
     id: string,
-    categoryData: Partial<ICategory>
-  ): Promise<ICategory> {
+    categoryData: Partial<Category>
+  ): Promise<Category> {
     const response = await axios.put(
       `${Endpoints.CATEGORIES}/${id}`,
       categoryData

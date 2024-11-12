@@ -1,24 +1,24 @@
 import axios from "axios";
-import IUser from "../interfaces/iuser";
+import User from "../types/user";
 import Endpoints from "../constants/endpoints";
 
 class UserService {
-  async createUser(userData: IUser): Promise<IUser> {
+  async createUser(userData: User): Promise<User> {
     const response = await axios.post(Endpoints.USERS, userData);
     return response.data;
   }
 
-  async getUsers(): Promise<IUser[]> {
+  async getUsers(): Promise<User[]> {
     const response = await axios.get(Endpoints.USERS);
     return response.data;
   }
 
-  async getUser(id: string): Promise<IUser> {
+  async getUser(id: string): Promise<User> {
     const response = await axios.get(`${Endpoints.USERS}/${id}`);
     return response.data;
   }
 
-  async updateUser(id: string, userData: Partial<IUser>): Promise<IUser> {
+  async updateUser(id: string, userData: Partial<User>): Promise<User> {
     const response = await axios.put(`${Endpoints.USERS}/${id}`, userData);
     return response.data;
   }

@@ -1,8 +1,8 @@
-interface IReview {
+type Review = {
   author: string;
   target: string;
   content: string;
   createdAt: Date;
-}
+};
 
-export default IReview;
+export default Review;

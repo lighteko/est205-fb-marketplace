@@ -1,4 +1,4 @@
-interface IPost {
+type Post = {
   user: string;
   category: string;
   title: string;
@@ -10,6 +10,6 @@ interface IPost {
   isNegotiable: Boolean;
   displayType: string;
   createdAt: Date;
-}
+};
 
-export default IPost;
+export default Post;

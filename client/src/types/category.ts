@@ -1,8 +1,8 @@
-interface ICategory {
+type Category = {
   name: string;
   icon: string;
   posts: [];
   createdAt: Date;
-}
+};
 
-export default ICategory;
+export default Category;

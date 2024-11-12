@@ -1,27 +1,27 @@
 import axios from "axios";
-import IReview from "../interfaces/ireview";
+import Review from "../types/review";
 import Endpoints from "../constants/endpoints";
 
 class ReviewService {
-  async createReview(reviewData: IReview): Promise<IReview> {
+  async createReview(reviewData: Review): Promise<Review> {
     const response = await axios.post(Endpoints.REVIEWS, reviewData);
     return response.data;
   }
 
-  async getReviews(): Promise<IReview[]> {
+  async getReviews(): Promise<Review[]> {
     const response = await axios.get(Endpoints.REVIEWS);
     return response.data;
   }
 
-  async getReview(id: string): Promise<IReview> {
+  async getReview(id: string): Promise<Review> {
     const response = await axios.get(`${Endpoints.REVIEWS}/${id}`);
     return response.data;
   }
 
   async updateReview(
     id: string,
-    reviewData: Partial<IReview>
-  ): Promise<IReview> {
+    reviewData: Partial<Review>
+  ): Promise<Review> {
     const response = await axios.put(`${Endpoints.REVIEWS}/${id}`, reviewData);
     return response.data;
   }
