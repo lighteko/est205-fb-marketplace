@@ -1,8 +1,8 @@
 import Image from "../models/image.model";
 
 class ImageDAO {
-  async uploadImage(imageData: Base64URLString) {
-    const image = new Image({ imageData });
+  async uploadImage(imgUrl: string) {
+    const image = new Image({ imgUrl });
     return await image.save();
   }
 
