@@ -8,8 +8,8 @@ import FavoritesView from "../views/FavoritesView";
 import MainView from "../views/MainView";
 import MyDealsView from "../views/MyDealsView";
 import MyProfileView from "../views/MyProfileView";
-import PostView from "../views/PostVIew";
 import UserView from "../views/UserView";
+import PostView from "../views/PostView";
 
 const Router = (): JSX.Element => {
   return (
