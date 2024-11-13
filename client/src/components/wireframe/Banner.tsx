@@ -14,7 +14,7 @@ export default function Banner(): JSX.Element {
       }}
     >
       <a href="https://facebook.com/">
-        <Icon src={facebook} alt="facebook" />
+        <Icon src={facebook} alt="facebook" autoSize />
       </a>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <Icon src={search} alt="search" />
