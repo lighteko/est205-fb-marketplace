@@ -1,0 +1,87 @@
+.RatingPage {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .Question {
+    margin: 20px 0;
+  }
+  
+  .Question p {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .emoji-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+  }
+  
+  .emoji-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    text-align: center;
+    color: #0766FF;
+  }
+  
+  .button-text {
+    font-size: 1rem;
+    color: #0766FF;
+  }
+  
+  .slider-labels {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #0766FF;
+  }
+  
+  .slider {
+    width: 60%;
+    accent-color: #808185;
+  }
+  
+  .feedback-section {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .feedback-section label {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  textarea {
+    width: 80%;
+    max-width: 500px;
+    height: 100px;
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #808185;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  .submit-button {
+    background-color: #1e90ff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #1c86ee;
+  }
+  
