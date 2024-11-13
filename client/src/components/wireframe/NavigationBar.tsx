@@ -33,6 +33,7 @@ export default function NavigationBar(): JSX.Element {
         position: "fixed",
         bottom: 0,
         width: "100%",
+        zIndex: 5,
       }}
     >
       <div style={viewBtnStyle} onClick={() => setSelected("home")}>

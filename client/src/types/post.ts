@@ -1,4 +1,5 @@
 type Post = {
+  _id: string;
   user: string;
   category: string;
   title: string;

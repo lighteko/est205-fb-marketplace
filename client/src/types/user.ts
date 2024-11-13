@@ -1,4 +1,5 @@
 type User = {
+  _id: string;
   name: string;
   chatrooms: string[];
   userPosts: string[];
