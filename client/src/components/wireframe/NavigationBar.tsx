@@ -16,10 +16,11 @@ import { Colors } from "../../constants/styles";
 export default function NavigationBar(): JSX.Element {
   const viewBtnStyle: CSSProperties = {
     display: "flex",
-    justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
-    flex: 1,
+    width: "15%",
+    paddingTop: "0.5em",
+    paddingBottom: "0.5em",
   };
   const [selected, setSelected] = useState("home");
   return (
@@ -27,12 +28,11 @@ export default function NavigationBar(): JSX.Element {
       style={{
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "space-evenly",
         boxShadow: "0px -2px 30px 0px rgba(0, 0, 0, 0.15)",
         position: "fixed",
         bottom: 0,
         width: "100%",
-        padding: "0.5em",
       }}
     >
       <div style={viewBtnStyle} onClick={() => setSelected("home")}>
@@ -94,7 +94,7 @@ export default function NavigationBar(): JSX.Element {
           size={1.5}
         />
         <Text
-          content="My Profile"
+          content="Profile"
           fontSize={0.85}
           fontWeight={selected === "profile" ? "600" : "400"}
           color={Colors.primaryColor}
