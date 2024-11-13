@@ -5,25 +5,27 @@ export default function Icon({
   alt,
   padding = true,
   autoSize = false,
+  size = 1,
 }: {
   src: string;
   alt: string;
   padding?: boolean;
   autoSize?: boolean;
+  size?: number;
 }): JSX.Element {
-  const size = autoSize ? {} : { height: "1em", width: "1em" };
+  const sizes = autoSize ? {} : { height: `${size}em`, width: `${size}em` };
   return (
     <div
       style={
         padding
           ? {
               margin: "0.25em",
-              ...size,
+              ...sizes,
               display: "flex",
               justifyContent: "center",
             }
           : {
-              ...size,
+              ...sizes,
               alignItems: "center",
               display: "flex",
               justifyContent: "center",

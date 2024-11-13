@@ -1,7 +1,7 @@
 import React from "react";
 import facebook from "../../assets/facebook.svg";
-import search from "../../assets/search.svg";
-import menu from "../../assets/menu.svg";
+import search from "../../assets/icons/search.svg";
+import menu from "../../assets/icons/menu.svg";
 import Icon from "../common/Icon";
 
 export default function Banner(): JSX.Element {

@@ -1,8 +1,8 @@
 import React from "react";
 import { HeaderType } from "../../constants/enums";
 import Icon from "../common/Icon";
-import trending from "../../assets/trending.svg";
-import gps from "../../assets/gps.svg";
+import trending from "../../assets/icons/trending.svg";
+import gps from "../../assets/icons/gps.svg";
 import Text from "../common/Text";
 import { Colors } from "../../constants/styles";
 
