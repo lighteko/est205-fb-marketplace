@@ -17,7 +17,7 @@ const Router = (): JSX.Element => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LocationView />} />
+        <Route path="/" element={<MainView />} />
         <Route path="/:category" element={<MainView />} />
         <Route path="/category" element={<CategoryView />} />
         <Route path="/chatroom/:chatroom/chat" element={<ChatView />} />
