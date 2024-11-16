@@ -3,7 +3,6 @@ import facebook from "../../assets/facebook.svg";
 import search from "../../assets/icons/search.svg";
 import menu from "../../assets/icons/menu.svg";
 import Icon from "../common/Icon";
-import IconButton from "../common/IconButton";
 import { Link } from "react-router-dom";
 
 export default function Banner(): JSX.Element {
