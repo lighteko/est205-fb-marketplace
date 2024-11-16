@@ -1,108 +1,73 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import "./CreatePostView.css";
+import LocationView from "./LocationView";
+import PhotoSelector from "../components/designbox/PhotoSelector";
 
-const LocationPage: React.FC = () => {
-  const [location, setLocation] = useState<string>("San Francisco");
-  const [acceptedDistance, setAcceptedDistance] = useState<number>(40);
-  const [mapPosition, setMapPosition] = useState<{ lat: number; lon: number }>({
-    lat: 37.7749,
-    lon: -122.4194,
-  });
-
-  const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const enteredLocation = e.target.value;
-    setLocation(enteredLocation);
-
-    if (enteredLocation.toLowerCase() === "san francisco") {
-      setMapPosition({ lat: 37.7749, lon: -122.4194 });
-    } else if (enteredLocation.toLowerCase() === "new york") {
-      setMapPosition({ lat: 40.7128, lon: -74.006 });
-    } else if (enteredLocation.toLowerCase() === "11024") {
-      setMapPosition({ lat: 40.9041, lon: -73.1238 });
-    } else {
-      setMapPosition({ lat: 37.7749, lon: -122.4194 });
-    }
-  };
-
-  const handleDistanceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setAcceptedDistance(Number(e.target.value));
-  };
-
-  const handleApply = () => {
-    alert(`Location: ${location}, Accepted Distance: ${acceptedDistance} miles. Need to add backend data`);
-  };
-
-  const distanceFactor = acceptedDistance * 0.02;
-  const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${mapPosition.lon - distanceFactor},${mapPosition.lat - distanceFactor},${mapPosition.lon + distanceFactor},${mapPosition.lat + distanceFactor}&layer=mapnik&marker=${mapPosition.lat},${mapPosition.lon}`;
-
+export default function CreatePostView(): JSX.Element {
   return (
-    <div style={{ padding: "20px" }}>
-      <h2 style={{ textAlign: "center" }}>My Location</h2>
-      <div style={{ marginBottom: "15px" }}>
-        <label>Type your Location: State, City, Zip Code</label>
-        <input
-          type="text"
-          value={location}
-          onChange={handleLocationChange}
-          style={{
-            display: "block",
-            width: "90%",
-            padding: "10px",
-            margin: "10px 0",
-          }}
-        />
+    <div className="create-post-container">
+      <h2 className="title">Product Information</h2>
+      <PhotoSelector />
+      <div className="image-upload">
+        <div className="upload-info">
+          
+        </div>
       </div>
-      <div style={{ marginBottom: "15px" }}>
-        <label>Accepted Distance</label>
-        <select
-          value={acceptedDistance}
-          onChange={handleDistanceChange}
-          style={{
-            display: "block",
-            width: "97%",
-            padding: "10px",
-            fontSize: "15px",
-          }}
-        >
-          <option value={10}>10 Miles</option>
-          <option value={20}>20 Miles</option>
-          <option value={40}>40 Miles</option>
-          <option value={60}>60 Miles</option>
-        </select>
+
+      <label className="label">Product Name</label>
+      <input className="input-field" type="text" placeholder="Enter product name" />
+
+      <label className="label">Category</label>
+      <input className="input-field" type="text" placeholder="Enter category" />
+
+      <label className="label">Product Description</label>
+      <textarea className="textarea-field" placeholder="Enter product description"></textarea>
+
+      <label className="label">Hashtag</label>
+      <input className="input-field" type="text" placeholder="Enter hashtag" />
+
+      <label className="label">Sell Method</label>
+      <div className="sell-method-buttons">
+        <button className="sell-method-button">To Sell</button>
+        <button className="sell-method-button">Give Away</button>
       </div>
-      <div
-        style={{
-          height: "400px",
-          width: "100%",
-          marginBottom: "15px",
-          border: "1px solid #ddd",
-          borderRadius: "5px",
-          overflow: "hidden",
-        }}
-      >
-        <iframe
-          title="Map"
-          src={mapSrc}
-          style={{ border: "none", width: "100%", height: "100%" }}
-          allowFullScreen
-        ></iframe>
+
+      <input className="amount-input" type="text" placeholder="$ Insert Amount" />
+
+      <div className="option">
+        <input type="checkbox"/>
+        <label htmlFor="open-offers">Open to Offers</label>
       </div>
-      <button
-        onClick={handleApply}
-        style={{
-          display: "block",
-          width: "100%",
-          padding: "10px",
-          backgroundColor: "#007BFF",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Apply
-      </button>
+
+      <label className="label">Delivery Type</label>
+      <div className="delivery-options">
+        <label className="option">
+          <input type="radio" name="delivery-type" defaultChecked />
+          Direct
+        </label>
+        <label className="option">
+          <input type="radio" name="delivery-type" />
+          Post Delivery
+        </label>
+      </div>
+
+      <label className="label">Direct Location Range</label>
+      <button className="add-location">+ Add Location</button>
+
+      <label className="label">Delivery Expense</label>
+      <div className="delivery-options">
+        <label className="option">
+          <input type="radio" name="delivery-expense" defaultChecked />
+          Included
+        </label>
+        <label className="option">
+          <input type="radio" name="delivery-expense" />
+          Excluded
+        </label>
+      </div>
+
+      <button className="post-product">Post Product</button>
     </div>
   );
-};
+}
 
-export default LocationPage;
