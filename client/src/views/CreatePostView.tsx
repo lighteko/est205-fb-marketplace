@@ -1,5 +1,6 @@
-import React from "react";
+import { useState } from "react";
 import "./CreatePostView.css";
+import LocationView from "./LocationView";
 import PhotoSelector from "../components/designbox/PhotoSelector";
 
 export default function CreatePostView(): JSX.Element {
@@ -27,14 +28,14 @@ export default function CreatePostView(): JSX.Element {
 
       <label className="label">Sell Method</label>
       <div className="sell-method-buttons">
-        <button className="sell-method-button selected">To Sell</button>
+        <button className="sell-method-button">To Sell</button>
         <button className="sell-method-button">Give Away</button>
       </div>
 
       <input className="amount-input" type="text" placeholder="$ Insert Amount" />
 
       <div className="option">
-        <input type="checkbox" id="open-offers" checked />
+        <input type="checkbox"/>
         <label htmlFor="open-offers">Open to Offers</label>
       </div>
 

@@ -7,7 +7,7 @@ export default function PhotoSelector() {
     const [pictureCount, setPictureCount] = useState(0);
 
     const handlePhotoClick = () => {
-        if (pictureCount < 10) {
+        if (pictureCount < 10) { 
             setPictureCount(prevCount => prevCount + 1);
         }
     };
