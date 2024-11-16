@@ -11,15 +11,32 @@ import heart_filled from "../../assets/icons/heart_filled.svg";
 export default function PostCard({ postId }: { postId: string }): JSX.Element {
   const post = useRef<Post | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [icon, setIcon] = useState(heart_outline);
+  const [likes, setLikes] = useState(0);
   useEffect(() => {
     const fetch = async () => {
       post.current = await PostService.getPost(postId);
+      setLikes(post.current.likes);
       setIsLoading(false);
     };
     setIsLoading(true);
     fetch();
   }, [postId]);
-  const [icon, setIcon] = useState(heart_outline);
+  const like = async () => {
+    if (post.current) {
+      await PostService.updatePost(postId, { likes: post.current.likes + 1 });
+      setLikes(likes + 1);
+      setIcon(heart_filled);
+    }
+  };
+
+  const dislike = async () => {
+    if (post.current) {
+      await PostService.updatePost(postId, { likes: post.current.likes - 1 });
+      setLikes(likes - 1);
+      setIcon(heart_outline);
+    }
+  };
 
   const cardStyle: CSSProperties = {
     display: "flex",
@@ -90,11 +107,16 @@ export default function PostCard({ postId }: { postId: string }): JSX.Element {
                   flexDirection: "row",
                   alignItems: "center",
                 }}
-                onClick={() => setIcon(icon === heart_outline ? heart_filled : heart_outline)}
+                onClick={() => {
+                  icon === heart_outline ? like() : dislike();
+                  setIcon(
+                    icon === heart_outline ? heart_filled : heart_outline
+                  );
+                }}
               >
                 <Icon src={icon} alt="heart" size={1} />
                 <Text
-                  content={post.current!.likes.toString()}
+                  content={likes.toString()}
                   fontSize={1}
                   fontWeight="normal"
                   color={Colors.primaryColor}

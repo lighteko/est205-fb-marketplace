@@ -10,6 +10,10 @@ class PostDAO {
     return await Post.find();
   }
 
+  async getPostsByCategory(categoryId: string) {
+    return await Post.find({ category: categoryId });
+  }
+
   async getPostById(postId: string) {
     return await Post.findById(postId);
   }
