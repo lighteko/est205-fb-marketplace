@@ -9,6 +9,10 @@ class PostService {
     return await PostDAO.getPosts();
   }
 
+  async getPostsByCategory(categoryId: string) {
+    return await PostDAO.getPostsByCategory(categoryId);
+  }
+
   async getPost(postId: string) {
     return await PostDAO.getPostById(postId);
   }

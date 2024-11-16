@@ -20,6 +20,15 @@ class PostController {
     }
   }
 
+  async getPostsByCategory(req: Request, res: Response) {
+    try {
+      const posts = await PostService.getPostsByCategory(req.params.categoryId);
+      res.status(200).send(posts);
+    } catch (error: any) {
+      res.status(400).send({ message: error.message });
+    }
+  }
+
   async getPost(req: Request, res: Response) {
     try {
       const post = await PostService.getPost(req.params.id);
