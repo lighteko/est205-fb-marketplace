@@ -17,8 +17,9 @@ const LocationPage: React.FC = () => {
     } else if (enteredLocation.toLowerCase() === "new york") {
       setMapPosition({ lat: 40.7128, lon: -74.006 });
     } else if (enteredLocation.toLowerCase() === "11024") {
-      setMapPosition({ lat: 40.9041, lon: -73.1238 });
-    } else {
+        setMapPosition({ lat: 40.9041, lon: -73.1238 })
+    }
+        else {
       setMapPosition({ lat: 37.7749, lon: -122.4194 });
     }
   };
@@ -27,12 +28,7 @@ const LocationPage: React.FC = () => {
     setAcceptedDistance(Number(e.target.value));
   };
 
-  const handleApply = () => {
-    alert(`Location: ${location}, Accepted Distance: ${acceptedDistance} miles. Need to add backend data`);
-  };
-
-  const distanceFactor = acceptedDistance * 0.02;
-  const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${mapPosition.lon - distanceFactor},${mapPosition.lat - distanceFactor},${mapPosition.lon + distanceFactor},${mapPosition.lat + distanceFactor}&layer=mapnik&marker=${mapPosition.lat},${mapPosition.lon}`;
+  const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${mapPosition.lon - 0.1},${mapPosition.lat - 0.1},${mapPosition.lon + 0.1},${mapPosition.lat + 0.1}&layer=mapnik&marker=${mapPosition.lat},${mapPosition.lon}`;
 
   return (
     <div style={{ padding: "20px" }}>
@@ -87,7 +83,6 @@ const LocationPage: React.FC = () => {
         ></iframe>
       </div>
       <button
-        onClick={handleApply}
         style={{
           display: "block",
           width: "100%",
