@@ -32,7 +32,7 @@ export default function PostCard({ postId }: { postId: string }): JSX.Element {
 
   const dislike = async () => {
     if (post.current) {
-      await PostService.updatePost(postId, { likes: post.current.likes - 1 });
+      await PostService.updatePost(postId, { likes: likes - 1 });
       setLikes(likes - 1);
       setIcon(heart_outline);
     }
