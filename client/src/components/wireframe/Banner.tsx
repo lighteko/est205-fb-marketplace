@@ -3,6 +3,8 @@ import facebook from "../../assets/facebook.svg";
 import search from "../../assets/icons/search.svg";
 import menu from "../../assets/icons/menu.svg";
 import Icon from "../common/Icon";
+import IconButton from "../common/IconButton";
+import { Link } from "react-router-dom";
 
 export default function Banner(): JSX.Element {
   return (
@@ -18,7 +20,9 @@ export default function Banner(): JSX.Element {
       </a>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <Icon src={search} alt="search" />
-        <Icon src={menu} alt="menu" />
+        <Link to="/categories">
+          <Icon src={menu} alt="menu" />
+        </Link>
       </div>
     </header>
   );

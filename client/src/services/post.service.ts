@@ -13,6 +13,13 @@ class PostService {
     return response.data;
   }
 
+  async getPostsByCategory(categoryId: string): Promise<Post[]> {
+    const response = await axios.get(
+      `${Endpoints.POSTS}/category/${categoryId}`
+    );
+    return response.data;
+  }
+
   async getPost(id: string): Promise<Post> {
     const response = await axios.get(`${Endpoints.POSTS}/${id}`);
     return response.data;
