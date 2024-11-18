@@ -12,7 +12,7 @@ class ChatroomService {
     const response = await axios.get(Endpoints.CHATROOMS);
     return response.data;
   }
-
+  
   async getChatroom(id: string): Promise<Chatroom> {
     const response = await axios.get(`${Endpoints.CHATROOMS}/${id}`);
     return response.data;

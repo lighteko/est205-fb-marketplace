@@ -20,7 +20,7 @@ export default function CategoryCard({
     fetch();
   }, [categoryId]);
   return (
-    <Link to={`/category/${categoryId}`}>
+    <Link to={`/posts/category/${categoryId}`}>
       <div id={categoryId + "-card"}>
         {loading ? <Loading /> : <div>
           <img src={"../../assets/categories/" + category.current!.icon} alt={category.current!.name} />

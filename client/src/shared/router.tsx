@@ -11,14 +11,16 @@ import DealsView from "../views/DealsView";
 import ProfileView from "../views/ProfileView";
 import PostView from "../views/PostView";
 import UserView from "../views/UserView";
+import LandingView from "../views/LandingView";
 
 
 const Router = (): JSX.Element => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainView />} />
-        <Route path="category/:category" element={<MainView />} />
+        <Route path="/" element={<LandingView />} />
+        <Route path="/posts" element={<MainView />} />
+        <Route path="/posts/category/:category" element={<MainView />} />
         <Route path="/categories" element={<CategoryView />} />
         <Route path="/chatroom/:chatroom/chat" element={<ChatView />} />
         <Route path="/chatrooms" element={<ChatroomView />} />

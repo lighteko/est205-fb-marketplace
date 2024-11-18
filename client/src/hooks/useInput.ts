@@ -2,10 +2,15 @@ import React, { useState } from "react";
 
 function useInput(
   initialValue: string
-): [string, (e: React.ChangeEvent<HTMLInputElement>) => void] {
+): [
+  string,
+  (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+] {
   const [value, setValue] = useState(initialValue);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void => {
     setValue(e.target.value);
   };
 

@@ -5,11 +5,13 @@ export default function Text({
   fontSize,
   fontWeight,
   color = "black",
+  style,
 }: {
   content: string;
   fontSize: number;
   fontWeight: string;
   color?: string;
+  style?: React.CSSProperties;
 }): JSX.Element {
   return (
     <div
@@ -19,6 +21,7 @@ export default function Text({
         lineHeight: `${fontSize}em`,
         height: `${fontSize}em`,
         color,
+        ...style,
       }}
     >
       {content}

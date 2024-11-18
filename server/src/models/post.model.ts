@@ -11,7 +11,7 @@ const PostSchema = new Schema<IPost>({
   price: { type: Number, required: true },
   likes: { type: Number, default: 0 },
   isNegotiable: { type: Boolean, required: true },
-  displayType: { type: String, required: true },
+  displayType: { type: String, required: true, default: "in-sale" },
   createdAt: { type: Date, default: Date.now },
 });
 

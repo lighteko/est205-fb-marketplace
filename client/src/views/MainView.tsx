@@ -19,7 +19,9 @@ export default function MainView(): JSX.Element {
   const { category } = useParams<{ category: string }>();
   useEffect(() => {
     const fetch = async () => {
-      posts.current = category ? await PostService.getPostsByCategory(category) : await PostService.getPosts();
+      posts.current = category
+        ? await PostService.getPostsByCategory(category)
+        : await PostService.getPosts();
       if (category) {
         categoryRef.current = await CategoryService.getCategory(category);
       }
@@ -32,8 +34,12 @@ export default function MainView(): JSX.Element {
   return (
     <>
       <Banner />
-      {category ? !isLoading && <MainCategoryHeader category={categoryRef.current!} /> : <Header type={HeaderType.MainView} />}
-      <main>
+      {category ? (
+        !isLoading && <MainCategoryHeader category={categoryRef.current!} />
+      ) : (
+        <Header type={HeaderType.MainView} />
+      )}
+      <main style={{ overflow: "auto", height: "80vh" }}>
         {isLoading ? (
           <Loading />
         ) : (

@@ -3,7 +3,7 @@ import Endpoints from "../constants/endpoints";
 import Post from "../types/post";
 
 class PostService {
-  async createPost(postData: Post): Promise<Post> {
+  async createPost(postData: Partial<Post>): Promise<Post> {
     const response = await axios.post(Endpoints.POSTS, postData);
     return response.data;
   }
