@@ -1,20 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
-import Chatroom from "../types/chatroom";
-import User from "../types/user";
 import AuthService from "../services/auth.service";
-import ChatroomService from "../services/chatroom.service";
 import NavigationBar from "../components/wireframe/NavigationBar";
+import ChatroomCard from "../components/card/ChatroomCard";
+import User from "../types/user";
 
 export default function ChatroomView(): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
-  const chatrooms = useRef<Chatroom[]>([]);
+  const user = useRef<User | null>(null);
   useEffect(() => {
     const fetch = async () => {
-      const user = await AuthService.getCurrentUser();
-      const chatroomIds = user.chatrooms;
-      chatrooms.current = await Promise.all(
-        chatroomIds.map((id) => ChatroomService.getChatroom(id))
-      );
+      user.current = await AuthService.getCurrentUser();
       setIsLoading(false);
     };
     setIsLoading(true);
@@ -23,6 +18,15 @@ export default function ChatroomView(): JSX.Element {
 
   return (
     <>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          {user.current!.chatrooms.map((chatroomId) => (
+            <ChatroomCard key={chatroomId} chatroomId={chatroomId} />
+          ))}
+        </div>
+      )}
       <NavigationBar />
     </>
   );

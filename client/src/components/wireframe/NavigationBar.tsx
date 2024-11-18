@@ -48,6 +48,7 @@ export default function NavigationBar(): JSX.Element {
       <nav
         style={{
           display: "flex",
+          backgroundColor: "white",
           flexDirection: "row",
           justifyContent: "space-evenly",
           boxShadow: "0px -2px 30px 0px rgba(0, 0, 0, 0.15)",

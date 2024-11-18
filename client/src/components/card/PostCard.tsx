@@ -7,6 +7,7 @@ import { Colors } from "../../constants/styles";
 import Icon from "../common/Icon";
 import heart_outline from "../../assets/icons/heart_outline.svg";
 import heart_filled from "../../assets/icons/heart_filled.svg";
+import { toEasyPrice } from "../../shared/auxilary";
 
 export default function PostCard({ postId }: { postId: string }): JSX.Element {
   const post = useRef<Post | null>(null);
@@ -96,7 +97,7 @@ export default function PostCard({ postId }: { postId: string }): JSX.Element {
               }}
             >
               <Text
-                content={"$ " + post.current!.price}
+                content={"$ " + toEasyPrice(post.current!.price)}
                 fontSize={1.2}
                 fontWeight="700"
                 color={Colors.primaryColor}
