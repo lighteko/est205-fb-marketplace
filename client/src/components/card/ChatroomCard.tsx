@@ -23,7 +23,6 @@ export default function ChatroomCard({ chatroomId }: { chatroomId: string }) {
       mostRecentChat.current = await ChatService.getChat(
         chats[chats.length - 1]
       );
-      console.log(mostRecentChat.current);
       setLoading(false);
     };
     setLoading(true);

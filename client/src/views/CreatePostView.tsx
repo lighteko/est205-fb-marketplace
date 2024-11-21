@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  RefObject,
+  MutableRefObject,
+} from "react";
 import "./CreatePostView.css";
 import PhotoSelector from "../components/designbox/PhotoSelector";
 import Text from "../components/common/Text";
@@ -15,6 +21,7 @@ import AuthService from "../services/auth.service";
 import User from "../types/user";
 import PostService from "../services/post.service";
 import { useNavigate } from "react-router-dom";
+import { UsePhotoSelector, usePhotoSelctor } from "../hooks/usePhotoSelctor";
 
 export default function CreatePostView(): JSX.Element {
   const navigate = useNavigate();
@@ -31,6 +38,7 @@ export default function CreatePostView(): JSX.Element {
   const [location, setLocation] = useState("");
   const categories = useRef<Category[]>([]);
   const user = useRef<User | null>(null);
+  const [photos, handlePhotos]: UsePhotoSelector = usePhotoSelctor();
   useEffect(() => {
     const fetch = async () => {
       categories.current = await CategoryService.getCategories();
@@ -60,7 +68,7 @@ export default function CreatePostView(): JSX.Element {
     <>
       <header>
         <Text content="Post New Item" fontSize={1.5} fontWeight="bold" />
-        <PhotoSelector />
+        <PhotoSelector selectedPhotos={photos} maxCount={10} handler={handlePhotos}/>
       </header>
       <section id="title-section">
         <label className="label">Title</label>
@@ -115,9 +123,13 @@ export default function CreatePostView(): JSX.Element {
         />
       </section>
       <div className="option">
-        <input type="checkbox" id="open-offers" onChange={(e) => {
-          setIsNegotiable(e.target.checked);
-        }}/>
+        <input
+          type="checkbox"
+          id="open-offers"
+          onChange={(e) => {
+            setIsNegotiable(e.target.checked);
+          }}
+        />
         <label htmlFor="open-offers">Open to Price Offers</label>
       </div>
       <label className="label">Direct Location Range</label>
