@@ -1,6 +1,5 @@
 function toRelativeTime(date: Date): string {
   const now = new Date();
-  console.log(date);
   const diff = now.getTime() - date.getTime();
   if (diff < 1000) {
     return "just now";
