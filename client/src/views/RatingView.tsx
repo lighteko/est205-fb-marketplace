@@ -1,24 +1,34 @@
-import React from "react";
 import "./RatingView.css";
+import React, { useState } from "react";
 import Text from "../components/common/Text";
 
 export default function RatingView(): JSX.Element {
+  const [activeButton, setActiveButton] = useState("");
+
+  const handleButtonClick = (buttonName: string) => {
+    setActiveButton(buttonName);
+  };
+
   return (
     <div className="RatingPage">
       <div className="Question">
-        <Text content={`How was your transaction with PlaceHolder`} fontSize={1.2} fontWeight={"bold"} />
+        <Text
+          content={`How was your transaction?`}
+          fontSize={1.2}
+          fontWeight={"bold"}
+        />
         <div className="emoji-buttons">
-          <button onClick={() => alert("Not Good clicked!")}>
+          <button className={`emoji-button ${activeButton === "notGood" ? "active" : ""}`} onClick={() => handleButtonClick("notGood")}>
             <span role="img" aria-label="not good">😠</span>
             <br />
             <span className="button-text">Not Good</span>
           </button>
-          <button onClick={() => alert("Neutral clicked!")}>
+          <button className={`emoji-button ${activeButton === "neutral" ? "active" : ""}`} onClick={() => handleButtonClick("neutral")}>
             <span role="img" aria-label="neutral">😐</span>
             <br />
             <span className="button-text">Neutral</span>
           </button>
-          <button onClick={() => alert("Very Good clicked!")}>
+          <button className={`emoji-button ${activeButton === "veryGood" ? "active" : ""}`} onClick={() => handleButtonClick("veryGood")}>
             <span role="img" aria-label="very good">😊</span>
             <br />
             <span className="button-text">Very Good</span>
@@ -55,4 +65,3 @@ export default function RatingView(): JSX.Element {
     </div>
   );
 }
-
