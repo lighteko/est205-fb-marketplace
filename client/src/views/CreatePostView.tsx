@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  RefObject,
-  MutableRefObject,
-} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./CreatePostView.css";
 import PhotoSelector from "../components/designbox/PhotoSelector";
 import Text from "../components/common/Text";
@@ -23,6 +17,8 @@ import PostService from "../services/post.service";
 import { useNavigate } from "react-router-dom";
 import { UsePhotoSelector, usePhotoSelctor } from "../hooks/usePhotoSelctor";
 import Loading from "../components/common/Loading";
+import RectButton from "../components/common/RectButton";
+import { Colors } from "../constants/styles";
 
 export default function CreatePostView(): JSX.Element {
   const navigate = useNavigate();
@@ -30,7 +26,7 @@ export default function CreatePostView(): JSX.Element {
   const [title, onChangeTitle] = useInput("");
   const [description, onChangeDescription] = useInput("");
   const [isNegotiable, setIsNegotiable] = useState(false);
-  const [price, onChangePrice] = useInput("");
+  const [price, onChangePrice, setPrice] = useInput("");
   const [selectedCategory, setCategory] = useDropdown({
     optionID: 0,
     optionValue: "Select Category",
@@ -40,6 +36,7 @@ export default function CreatePostView(): JSX.Element {
   const categories = useRef<Category[]>([]);
   const user = useRef<User | null>(null);
   const [photos, handlePhotos]: UsePhotoSelector = usePhotoSelctor();
+  const [method, setMethod] = useState("");
   useEffect(() => {
     const fetch = async () => {
       categories.current = await CategoryService.getCategories();
@@ -69,8 +66,17 @@ export default function CreatePostView(): JSX.Element {
   return loading ? (
     <Loading />
   ) : (
-    <>
-      <header>
+    <section
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "1em",
+        paddingTop: "2em",
+      }}
+    >
+      <header style={{ width: "100%" }}>
         <Text content="Post New Item" fontSize={1.5} fontWeight="bold" />
         <PhotoSelector
           selectedPhotos={photos}
@@ -78,17 +84,17 @@ export default function CreatePostView(): JSX.Element {
           handler={handlePhotos}
         />
       </header>
-      <section id="title-section">
+      <section id="title-section" style={{ width: "100%" }}>
         <label className="label">Title</label>
         <Input
           type={InputType.INPUT}
-          placeholder="Title"
+          placeholder="Enter title"
           onChange={(e) => onChangeTitle(e)}
           value={title}
           name="title"
         />
       </section>
-      <section id="category-section">
+      <section id="category-section" style={{ width: "100%" }}>
         <label className="label">Category</label>
         <Dropdown
           title="Catagories"
@@ -103,9 +109,10 @@ export default function CreatePostView(): JSX.Element {
           ]}
           value={selectedCategory}
           onSelect={setCategory}
+          style={{ width: "10em" }}
         />
       </section>
-      <section id="description-section">
+      <section id="description-section" style={{ width: "100%" }}>
         <label className="label">Product Description</label>
         <Input
           type={InputType.TEXTAREA}
@@ -113,13 +120,43 @@ export default function CreatePostView(): JSX.Element {
           onChange={onChangeDescription}
           value={description}
           name="description"
+          style={{ width: "calc(100% - 2em)" }}
         />
       </section>
-      <section id="price-section">
+      <section id="price-section" style={{ width: "100%" }}>
         <label className="label">Sell Method</label>
         <div className="sell-method-buttons">
-          <button className="sell-method-button selected">To Sell</button>
-          <button className="sell-method-button">Give Away</button>
+          <RectButton
+            text={"To Sell"}
+            onClick={() => setMethod("sell")}
+            style={{
+              width: "15em",
+              height: "3em",
+              borderRadius: "0.5em",
+              backgroundColor:
+                method === "sell" ? Colors.primaryColor : Colors.secondaryColor,
+              color: method === "sell" ? "white" : "black",
+            }}
+            size={1}
+          />
+          <RectButton
+            text={"Give Away"}
+            onClick={() => {
+              setPrice("0");
+              setMethod("giveaway");
+            }}
+            style={{
+              width: "15em",
+              height: "3em",
+              borderRadius: "0.5em",
+              backgroundColor:
+                method === "giveaway"
+                  ? Colors.primaryColor
+                  : Colors.secondaryColor,
+              color: method === "giveaway" ? "white" : "black",
+            }}
+            size={1}
+          />
         </div>
         <label className="label">Price</label>
         <Input
@@ -140,13 +177,42 @@ export default function CreatePostView(): JSX.Element {
         />
         <label htmlFor="open-offers">Open to Price Offers</label>
       </div>
-      <label className="label">Direct Location Range</label>
-      <button className="add-location" onClick={() => setLocation("New York")}>
-        + Add Location
-      </button>
-      <button className="post-product" onClick={() => submit()}>
-        Post Product
-      </button>
-    </>
+      <RectButton
+        text={"Add Location"}
+        onClick={() => setLocation("New York")}
+        size={1}
+        style={{
+          width: "20em",
+          height: "3em",
+          borderRadius: "0.5em",
+          backgroundColor:
+            location === "New York"
+              ? Colors.primaryColor
+              : Colors.secondaryColor,
+          color: location === "New York" ? "white" : "black",
+        }}
+      />
+      <RectButton
+        text={"Post Item"}
+        onClick={() => submit()}
+        size={1}
+        style={{
+          width: "20em",
+          height: "3em",
+          borderRadius: "0.5em",
+        }}
+      />
+      <RectButton
+        text={"Cancel"}
+        onClick={() => navigate("/posts")}
+        size={1}
+        style={{
+          marginTop: "2em",
+          width: "20em",
+          height: "3em",
+          borderRadius: "0.5em",
+        }}
+      />
+    </section>
   );
 }

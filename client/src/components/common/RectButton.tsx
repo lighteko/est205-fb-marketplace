@@ -21,7 +21,7 @@ export default function RectButton({
         margin: "0.5em",
         height: size / 2.5 + "em",
         width: size / 1.25 + "em",
-        borderRadius: size / 2.5 + "em",
+        borderRadius: size / 15 + "em",
         color: "white",
         textAlign: "center",
         display: "flex",
