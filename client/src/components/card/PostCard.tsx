@@ -8,16 +8,22 @@ import Icon from "../common/Icon";
 import heart_outline from "../../assets/icons/heart_outline.svg";
 import heart_filled from "../../assets/icons/heart_filled.svg";
 import { toEasyPrice } from "../../shared/auxilary";
+import User from "../../types/user";
+import authService from "../../services/auth.service";
+import userService from "../../services/user.service";
 
 export default function PostCard({ postId }: { postId: string }): JSX.Element {
   const post = useRef<Post | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [icon, setIcon] = useState(heart_outline);
   const [likes, setLikes] = useState(0);
+  const userRef = useRef<User | null>(null);
   useEffect(() => {
     const fetch = async () => {
       post.current = await PostService.getPost(postId);
       setLikes(post.current.likes);
+      userRef.current = await authService.getCurrentUser();
+      if (userRef.current!.likedPosts.includes(postId)) setIcon(heart_filled);
       setIsLoading(false);
     };
     setIsLoading(true);
@@ -26,6 +32,9 @@ export default function PostCard({ postId }: { postId: string }): JSX.Element {
   const like = async () => {
     if (post.current) {
       await PostService.updatePost(postId, { likes: post.current.likes + 1 });
+      await userService.updateUser(userRef.current!._id, {
+        likedPosts: [...userRef.current!.likedPosts, postId],
+      });
       setLikes(likes + 1);
       setIcon(heart_filled);
     }
@@ -34,6 +43,11 @@ export default function PostCard({ postId }: { postId: string }): JSX.Element {
   const dislike = async () => {
     if (post.current) {
       await PostService.updatePost(postId, { likes: likes - 1 });
+      await userService.updateUser(userRef.current!._id, {
+        likedPosts: [
+          ...userRef.current!.likedPosts.filter((value) => value !== postId),
+        ],
+      });
       setLikes(likes - 1);
       setIcon(heart_outline);
     }
