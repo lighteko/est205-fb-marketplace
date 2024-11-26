@@ -5,7 +5,7 @@ interface IPost {
   category: Schema.Types.ObjectId;
   title: string;
   description: string;
-  images: string[];
+  images: Schema.Types.ObjectId[];
   location: string;
   price: number;
   likes: number;

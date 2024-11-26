@@ -6,7 +6,7 @@ class ReviewController {
     try {
       const review = await ReviewService.createReview(req.body);
       res.status(201).send(review);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -15,7 +15,7 @@ class ReviewController {
     try {
       const reviews = await ReviewService.getReviews();
       res.status(200).send(reviews);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -24,7 +24,7 @@ class ReviewController {
     try {
       const review = await ReviewService.getReview(req.params.id);
       res.status(200).send(review);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -33,7 +33,7 @@ class ReviewController {
     try {
       const review = await ReviewService.updateReview(req.params.id, req.body);
       res.status(200).send(review);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -42,7 +42,7 @@ class ReviewController {
     try {
       await ReviewService.deleteReview(req.params.id);
       res.sendStatus(204);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }

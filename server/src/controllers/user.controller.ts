@@ -6,7 +6,7 @@ class UserController {
     try {
       const user = await UserService.createUser(req.body);
       res.status(201).send(user);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -15,7 +15,7 @@ class UserController {
     try {
       const users = await UserService.getUsers();
       res.status(200).send(users);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -24,7 +24,7 @@ class UserController {
     try {
       const user = await UserService.getUser(req.params.id);
       res.status(200).send(user);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -33,7 +33,7 @@ class UserController {
     try {
       const user = await UserService.updateUser(req.params.id, req.body);
       res.status(200).send(user);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
@@ -42,7 +42,7 @@ class UserController {
     try {
       await UserService.deleteUser(req.params.id);
       res.sendStatus(204);
-    } catch (error) {
+    } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   }
