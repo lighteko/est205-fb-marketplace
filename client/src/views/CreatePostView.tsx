@@ -22,6 +22,7 @@ import User from "../types/user";
 import PostService from "../services/post.service";
 import { useNavigate } from "react-router-dom";
 import { UsePhotoSelector, usePhotoSelctor } from "../hooks/usePhotoSelctor";
+import Loading from "../components/common/Loading";
 
 export default function CreatePostView(): JSX.Element {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ export default function CreatePostView(): JSX.Element {
 
   const submit = async () => {
     const categoryID = selectedCategory.optionID;
+    console.log(photos);
     const product: Partial<Post> = {
       user: user.current?._id,
       title,
@@ -64,11 +66,17 @@ export default function CreatePostView(): JSX.Element {
     navigate("/posts");
   };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       <header>
         <Text content="Post New Item" fontSize={1.5} fontWeight="bold" />
-        <PhotoSelector selectedPhotos={photos} maxCount={10} handler={handlePhotos}/>
+        <PhotoSelector
+          selectedPhotos={photos}
+          maxCount={10}
+          handler={handlePhotos}
+        />
       </header>
       <section id="title-section">
         <label className="label">Title</label>

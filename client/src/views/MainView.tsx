@@ -15,6 +15,7 @@ import MainCategoryHeader from "../components/wireframe/MainCategoryHeader";
 export default function MainView(): JSX.Element {
   const posts = useRef<Post[]>([]);
   const categoryRef = useRef<Category | null>(null);
+
   const [isLoading, setIsLoading] = useState(true);
   const { category } = useParams<{ category: string }>();
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function MainView(): JSX.Element {
       if (category) {
         categoryRef.current = await CategoryService.getCategory(category);
       }
+
       setIsLoading(false);
     };
     setIsLoading(true);

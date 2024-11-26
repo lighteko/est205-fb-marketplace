@@ -70,7 +70,7 @@ export default function Header({ type }: { type: HeaderType }): JSX.Element {
               margin: "0.25em"
             }}
           >
-            <Link to="/">
+            <Link to="/posts">
               <Icon src={exit} alt="Exit" size={1.5} />
             </Link>
           </div>
