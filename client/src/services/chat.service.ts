@@ -3,7 +3,7 @@ import Endpoints from "../constants/endpoints";
 import Chat from "../types/chat";
 
 class ChatService {
-  async createChat(chatData: Chat): Promise<Chat> {
+  async createChat(chatData: Partial<Chat>): Promise<Chat> {
     const response = await axios.post(Endpoints.CHATS, chatData);
     return response.data;
   }

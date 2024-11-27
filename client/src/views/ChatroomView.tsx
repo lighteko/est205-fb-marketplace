@@ -18,15 +18,20 @@ export default function ChatroomView(): JSX.Element {
 
   return (
     <>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          {user.current!.chatrooms.map((chatroomId) => (
-            <ChatroomCard key={chatroomId} chatroomId={chatroomId} />
-          ))}
-        </div>
-      )}
+      <section style={{ padding: "1em" }}>
+        <h2>Chatrooms</h2>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <div>
+              {user.current!.chatrooms.map((chatroomId) => (
+                <ChatroomCard key={chatroomId} chatroomId={chatroomId} />
+              ))}
+            </div>
+          </>
+        )}
+      </section>
       <NavigationBar />
     </>
   );

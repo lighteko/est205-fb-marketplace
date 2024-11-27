@@ -1,5 +1,6 @@
 import React from "react";
 import { InputType } from "../../constants/enums";
+import "./Input.css";
 
 export default function Input({
   type,
@@ -46,6 +47,7 @@ export default function Input({
             onChange={onChange}
             onKeyDown={onKeyDown}
             name={name}
+            style={style}
           />
         </>
       );
