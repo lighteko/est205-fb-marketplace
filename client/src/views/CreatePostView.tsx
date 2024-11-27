@@ -19,6 +19,7 @@ import { UsePhotoSelector, usePhotoSelctor } from "../hooks/usePhotoSelctor";
 import Loading from "../components/common/Loading";
 import RectButton from "../components/common/RectButton";
 import { Colors } from "../constants/styles";
+import userService from "../services/user.service";
 
 export default function CreatePostView(): JSX.Element {
   const navigate = useNavigate();
@@ -49,7 +50,6 @@ export default function CreatePostView(): JSX.Element {
 
   const submit = async () => {
     const categoryID = selectedCategory.optionID;
-    console.log(photos);
     const product: Partial<Post> = {
       user: user.current?._id,
       title,
@@ -59,7 +59,10 @@ export default function CreatePostView(): JSX.Element {
       location,
       isNegotiable,
     };
-    await PostService.createPost(product);
+    const post = await PostService.createPost(product);
+    await userService.updateUser(user.current!._id, {
+      userPosts: [...user.current!.userPosts, post._id],
+    });
     navigate("/posts");
   };
 
