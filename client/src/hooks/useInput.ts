@@ -4,7 +4,8 @@ function useInput(
   initialValue: string
 ): [
   string,
-  (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void,
+  React.Dispatch<React.SetStateAction<string>>
 ] {
   const [value, setValue] = useState(initialValue);
 
@@ -14,7 +15,7 @@ function useInput(
     setValue(e.target.value);
   };
 
-  return [value, handleChange];
+  return [value, handleChange, setValue];
 }
 
 export default useInput;
