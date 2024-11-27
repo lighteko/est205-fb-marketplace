@@ -18,7 +18,7 @@ const Router = (): JSX.Element => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingView />} />
+        <Route path="/" element={<ProfileView />} />
         <Route path="/posts" element={<MainView />} />
         <Route path="/posts/category/:category" element={<MainView />} />
         <Route path="/categories" element={<CategoryView />} />
