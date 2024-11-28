@@ -1,4 +1,4 @@
-const API_URL: string = "est205-fb-marketplace-production.up.railway.app/api";
+const API_URL: string = "https://est205-fb-marketplace-production.up.railway.app/api";
 
 const Endpoints = Object.freeze({
   USERS: `${API_URL}/users`,
