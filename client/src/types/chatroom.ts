@@ -1,4 +1,4 @@
-type ChatRoom = {
+type Chatroom = {
   _id: string;
   post: string;
   users: string[];
@@ -6,4 +6,4 @@ type ChatRoom = {
   createdAt: Date;
 };
 
-export default ChatRoom;
+export default Chatroom;

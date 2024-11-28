@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import User from "../types/user";
-import ChatRoom from "../types/chatroom";
+import Chatroom from "../types/chatroom";
 import ChatBalloon from "../components/card/ChatBalloon";
 import authService from "../services/auth.service";
 import chatroomService from "../services/chatroom.service";
@@ -14,7 +14,7 @@ import exit from "../assets/icons/exit.svg";
 import Icon from "../components/common/Icon";
 
 export default function ChatView(): JSX.Element {
-  const chatroomRef = useRef<ChatRoom | null>(null);
+  const chatroomRef = useRef<Chatroom | null>(null);
   const partnerRef = useRef<User | null>(null);
   const [loading, setLoading] = useState(true);
   const { chatroom } = useParams<{ chatroom: string }>();

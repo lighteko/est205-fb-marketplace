@@ -9,6 +9,9 @@ import PostCard from "../components/card/PostCard";
 import Post from "../types/post";
 import Category from "../types/category";
 import CategoryCard from "../components/card/CategoryCard";
+import Header from "../components/wireframe/Header";
+import { HeaderType } from "../constants/enums";
+import Banner from "../components/wireframe/Banner";
 
 export default function FavoritesView(): JSX.Element {
   type Pair<P, Q> = {
@@ -42,17 +45,19 @@ export default function FavoritesView(): JSX.Element {
 
   return (
     <>
+      <Banner />
+      <Header type={HeaderType.FavoritesView} />
       <main style={{ overflow: "auto", height: "80vh" }}>
         {isLoading ? (
           <Loading />
         ) : (
           categorizedPosts.current.map((pair) => (
-            <>
-              <CategoryCard key={pair.p._id} categoryId={pair.p._id} />
+            <section key={pair.p._id}>
+              <CategoryCard categoryId={pair.p._id} />
               {pair.q.map((post) => (
                 <PostCard key={post._id} postId={post._id} />
               ))}
-            </>
+            </section>
           ))
         )}
       </main>
