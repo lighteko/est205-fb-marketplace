@@ -11,7 +11,12 @@ import ReviewRoutes from "./routes/review.route";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://https://marketplace-eight-pi.vercel.app/"],
+    credentials: true, // If you are using cookies for authentication
+  })
+);
 dotenv.config();
 
 app.use("/api/categories", CategoryRoutes);
