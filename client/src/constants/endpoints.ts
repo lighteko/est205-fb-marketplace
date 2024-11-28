@@ -1,4 +1,4 @@
-const API_URL: string = "http://localhost:8080/api";
+const API_URL: string = "est205-fb-marketplace-production.up.railway.app/api";
 
 const Endpoints = Object.freeze({
   USERS: `${API_URL}/users`,

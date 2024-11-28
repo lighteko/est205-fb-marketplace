@@ -11,6 +11,7 @@ import { toEasyPrice } from "../../shared/auxilary";
 import User from "../../types/user";
 import authService from "../../services/auth.service";
 import userService from "../../services/user.service";
+import { useNavigate } from "react-router-dom";
 
 export default function PostCard({ postId }: { postId: string }): JSX.Element {
   const post = useRef<Post | null>(null);
@@ -18,6 +19,7 @@ export default function PostCard({ postId }: { postId: string }): JSX.Element {
   const [icon, setIcon] = useState(heart_outline);
   const [likes, setLikes] = useState(0);
   const userRef = useRef<User | null>(null);
+  const navigate = useNavigate();
   useEffect(() => {
     const fetch = async () => {
       post.current = await PostService.getPost(postId);
@@ -74,6 +76,7 @@ export default function PostCard({ postId }: { postId: string }): JSX.Element {
               backgroundColor: "gray",
               borderRadius: "0.5em",
             }}
+            onClick={() => navigate(`/post/${postId}`)}
           >
             No Image
           </div>
@@ -88,21 +91,31 @@ export default function PostCard({ postId }: { postId: string }): JSX.Element {
               justifyContent: "space-between",
             }}
           >
-            <Text
-              content={post.current!.title}
-              fontSize={1.25}
-              fontWeight="bold"
-            />
-            <Text
-              content={post.current!.description}
-              fontSize={0.85}
-              fontWeight="normal"
-            />
-            <Text
-              content={post.current!.location}
-              fontSize={0.85}
-              fontWeight="normal"
-            />
+            <div
+              onClick={() => navigate(`/post/${postId}`)}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                height: "100%"
+              }}
+            >
+              <Text
+                content={post.current!.title}
+                fontSize={1.25}
+                fontWeight="bold"
+              />
+              <Text
+                content={post.current!.description}
+                fontSize={0.85}
+                fontWeight="normal"
+              />
+              <Text
+                content={post.current!.location}
+                fontSize={0.85}
+                fontWeight="normal"
+              />
+            </div>
             <div
               style={{
                 display: "flex",

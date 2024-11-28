@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CategoryService from "../../services/category.service";
 import Category from "../../types/category";
 import Loading from "../common/Loading";
+import Text from "../common/Text";
 
 export default function CategoryCard({
   categoryId,
@@ -21,10 +22,21 @@ export default function CategoryCard({
   }, [categoryId]);
   return (
     <Link to={`/posts/category/${categoryId}`}>
-      <div id={categoryId + "-card"}>
-        {loading ? <Loading /> : <div>
-          <img src={"../../assets/categories/" + category.current!.icon} alt={category.current!.name} />
-        </div> }
+      <div
+        id={categoryId + "-card"}
+        style={{
+          margin: "1em",
+        }}
+      >
+        {loading ? (
+          <Loading />
+        ) : (
+          <Text
+            content={category.current!.name}
+            fontSize={1}
+            fontWeight={"600"}
+          />
+        )}
       </div>
     </Link>
   );

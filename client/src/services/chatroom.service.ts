@@ -3,7 +3,7 @@ import Endpoints from "../constants/endpoints";
 import Chatroom from "../types/chatroom";
 
 class ChatroomService {
-  async createChatroom(chatroomData: Chatroom): Promise<Chatroom> {
+  async createChatroom(chatroomData: Partial<Chatroom>): Promise<Chatroom> {
     const response = await axios.post(Endpoints.CHATROOMS, chatroomData);
     return response.data;
   }

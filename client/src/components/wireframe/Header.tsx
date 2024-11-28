@@ -67,7 +67,7 @@ export default function Header({ type }: { type: HeaderType }): JSX.Element {
               display: "flex",
               justifyContent: "end",
               alignItems: "end",
-              margin: "0.25em"
+              margin: "0.25em",
             }}
           >
             <Link to="/posts">
@@ -87,6 +87,19 @@ export default function Header({ type }: { type: HeaderType }): JSX.Element {
             <Text content="Categories" fontSize={1.5} fontWeight="500" />
           </section>
         </>
+      );
+    case HeaderType.FavoritesView:
+      return (
+        <section
+          className="header favoritesview"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            margin: "0.5em",
+          }}
+        >
+          <Text content="Favorites" fontSize={1.5} fontWeight="500" />
+        </section>
       );
     default:
       break;
