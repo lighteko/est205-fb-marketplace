@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://https://marketplace-eight-pi.vercel.app/"],
+    origin: ["https://marketplace-eight-pi.vercel.app/"],
     credentials: true, // If you are using cookies for authentication
   })
 );
